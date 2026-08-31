@@ -1,0 +1,31 @@
+# ── Rahasia — JANGAN PERNAH di-commit ────────────────────────────────
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# ── Dependensi ───────────────────────────────────────────────────────
+node_modules/
+
+# ── Data runtime (batch, template, cache PDF, state blockchain lokal) ─
+apps/web/data/
+apps/web/.svelte-kit/
+apps/web/build/
+
+# ── Foundry ──────────────────────────────────────────────────────────
+contracts/out/
+contracts/cache/
+contracts/lib/
+
+# ── Keluaran contoh ──────────────────────────────────────────────────
+contoh-sertifikat/
+
+# ── Sistem ───────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.log
+
+# Konfigurasi asisten pengembangan (lokal saja)
+CLAUDE.md
