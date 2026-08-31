@@ -1,0 +1,10 @@
+# ── Statistik bahasa GitHub (Linguist) ───────────────────────────────
+# Skrip bantu dan berkas uji bukan bagian dari aplikasi yang dijalankan,
+# sehingga tidak ikut dihitung pada bilah statistik bahasa. Kodenya tetap
+# ada di repositori dan tetap dapat dibaca seperti biasa.
+
+apps/web/scripts/**   linguist-vendored=true
+apps/web/test/**      linguist-vendored=true
+
+# Dokumentasi tidak ikut dihitung
+*.md                  linguist-documentation=true
