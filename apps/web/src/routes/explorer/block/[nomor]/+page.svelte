@@ -35,18 +35,19 @@
 {/if}
 
 <style>
-	.balik { font-size: 12.5px; color: var(--redup); text-decoration: none; }
-	h1 { font-size: 21px; margin: 10px 0 12px; }
-	h2 { font-size: 14px; margin: 0 0 10px; }
-	.pindah { display: flex; gap: 14px; margin-bottom: 14px; font-size: 12.5px; }
-	.pindah a { color: var(--aksen); text-decoration: none; }
-	.kartu { background: var(--kartu); border: 1px solid var(--garis); border-radius: 10px; padding: 17px; margin-bottom: 14px; }
-	dl { display: grid; grid-template-columns: minmax(110px, 150px) 1fr; gap: 6px 18px; margin: 0; font-size: 12.5px; }
-	dt { color: var(--redup); }
-	dd { margin: 0; overflow-wrap: anywhere; }
-	.mono { font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; }
-	a.mono { color: var(--aksen); text-decoration: none; }
-	.baris { padding: 8px 0; border-top: 1px solid var(--garis); display: flex; flex-direction: column; gap: 3px; font-size: 12px; }
-	.redup { color: var(--redup); }
-	@media (max-width: 620px) { dl { grid-template-columns: 1fr; gap: 2px 0; } dt { margin-top: 8px; } }
+	.balik { font-size: 12.5px; color: var(--redup); text-decoration: none;
+	}
+	h1 { font-size: 21px; margin: 10px 0 12px;
+	}
+	h2 { font-size: 14px; margin: 0 0 10px;
+	}
+	.pindah { display: flex; gap: 14px; margin-bottom: 14px; font-size: 12.5px;
+	}
+	.pindah a { color: var(--aksen); text-decoration: none;
+	}
+	a.mono { color: var(--aksen); text-decoration: none;
+	}
+	.baris { padding: 8px 0; border-top: 1px solid var(--garis); display: flex; flex-direction: column; gap: 3px; font-size: 12px;
+	}
 </style>
+

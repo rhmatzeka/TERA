@@ -109,6 +109,7 @@ else
   export NAMA_JARINGAN="anvil-lokal"
   export BASE_URL="http://localhost:5173"
   export AMBANG_SALDO_WALLET="0.05"
+  export SIMBOL_TOKEN="ETH"
   # Anvil tidak punya explorer publik -> pakai explorer bawaan aplikasi.
   export EXPLORER_URL="/explorer"
 fi

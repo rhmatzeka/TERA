@@ -15,12 +15,12 @@
 		Penyelenggara dapat menerbitkan batch pertama melalui panel admin.
 	</div>
 {:else if data.galat}
-	<div class="kabar bad">
+	<div class="kabar bahaya">
 		Tidak dapat terhubung ke {data.jaringan.rpcUrl} — {data.galat}
 	</div>
 {:else if data.rantai}
 	{#if !data.explorer}
-		<div class="kabar warn">
+		<div class="kabar awas">
 			<strong>Jaringan lokal tidak punya block explorer publik.</strong>
 			Anvil hanya berjalan di komputer ini, sehingga tidak ada situs seperti Etherscan
 			yang dapat membukanya. Halaman ini menggantikan peran explorer dengan membaca
@@ -114,27 +114,23 @@
 {/if}
 
 <style>
-	h1 { font-size: 24px; margin: 0 0 6px; }
-	h2 { font-size: 15px; margin: 0 0 10px; }
-	.sub { color: var(--redup); font-size: 14px; margin: 0 0 20px; max-width: 62ch; }
-	.redup { color: var(--redup); }
-	.kecil { font-size: 12.5px; margin: 0 0 12px; max-width: 66ch; line-height: 1.55; }
-	.kartu { background: var(--kartu); border: 1px solid var(--garis); border-radius: 10px; padding: 18px; margin-bottom: 16px; }
-	.sorot { border-color: var(--aksen); }
-	dl { display: grid; grid-template-columns: minmax(130px, 180px) 1fr; gap: 6px 18px; margin: 0; font-size: 13px; }
-	dt { color: var(--redup); }
-	dd { margin: 0; overflow-wrap: anywhere; }
-	.mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px; }
-	.pil { font-size: 11.5px; padding: 2px 9px; border-radius: 999px; }
-	.pil.ok { background: var(--ok-bg); color: var(--ok-tx); border: 1px solid var(--ok-garis); }
-	.pil.bad { background: var(--bad-bg); color: var(--bad-tx); border: 1px solid var(--bad-garis); }
-	.peristiwa { border-top: 1px solid var(--garis); padding-top: 12px; margin-top: 12px; }
-	.nama-event { font-weight: 600; font-size: 13px; display: block; margin-bottom: 8px; }
-	.kabar { border-radius: 10px; padding: 14px 16px; font-size: 13px; margin-bottom: 16px; border: 1px solid var(--garis); background: var(--kartu); }
-	.kabar.warn { background: var(--warn-bg); color: var(--warn-tx); border-color: var(--warn-garis); }
-	.kabar.bad { background: var(--bad-bg); color: var(--bad-tx); border-color: var(--bad-garis); }
-	.tautan-explorer { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
-	.tautan-explorer a { font-size: 13px; color: var(--aksen); text-decoration: none; border: 1px solid var(--garis); border-radius: 8px; padding: 8px 13px; }
-	code { font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
-	@media (max-width: 620px) { dl { grid-template-columns: 1fr; gap: 2px 0; } dt { margin-top: 8px; } }
+	h1 { font-size: 24px; margin: 0 0 6px;
+	}
+	h2 { font-size: 15px; margin: 0 0 10px;
+	}
+	.sub { color: var(--redup); font-size: 14px; margin: 0 0 20px; max-width: 62ch;
+	}
+	.kecil { font-size: 12.5px; margin: 0 0 12px; max-width: 66ch; line-height: 1.55;
+	}
+	.peristiwa { border-top: 1px solid var(--garis); padding-top: 12px; margin-top: 12px;
+	}
+	.nama-event { font-weight: 600; font-size: 13px; display: block; margin-bottom: 8px;
+	}
+	.tautan-explorer { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px;
+	}
+	.tautan-explorer a { font-size: 13px; color: var(--aksen); text-decoration: none; border: 1px solid var(--garis); border-radius: 8px; padding: 8px 13px;
+	}
+	code { font-family: ui-monospace, Menlo, monospace; font-size: 12px;
+	}
 </style>
+

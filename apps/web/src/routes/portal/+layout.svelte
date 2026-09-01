@@ -1,40 +1,63 @@
 <script lang="ts">
+	import '../../app.css';
 	let { children, data } = $props();
 </script>
 
-<div class="cangkang">
+<div class="situs">
 	<header>
-		<a href="/portal" class="merek">
-			<span class="lambang">✓</span>
-			<span class="nama">TERA</span>
-			<span class="sub-merek">Portal Peserta</span>
-		</a>
-		<div class="kanan">
-			<span class="sapa">{data.pengguna.nama}</span>
-			<form method="POST" action="/keluar"><button type="submit">Keluar</button></form>
+		<div class="wadah sempit kepala-isi">
+			<a href="/portal" class="merek">
+				<span class="lambang">✓</span>
+				<span class="nama">TERA</span>
+				<span class="slogan">Portal Peserta</span>
+			</a>
+			<div class="baris g12">
+				<span class="kecil sapa">{data.pengguna.nama}</span>
+				<form method="POST" action="/keluar">
+					<button class="tombol putih mini" type="submit">Keluar</button>
+				</form>
+			</div>
 		</div>
+		<div class="pita"><i></i><i></i><i></i><i></i><i></i></div>
 	</header>
-	<main>{@render children()}</main>
+
+	<main class="wadah sempit isi">{@render children()}</main>
+
 	<footer>
-		Sertifikat Anda dapat diperiksa keasliannya oleh siapa pun, langsung ke
-		catatan permanen. Data pribadi tidak disimpan di blockchain.
+		<div class="pita"><i></i><i></i><i></i><i></i><i></i></div>
+		<div class="wadah sempit kaki-isi">
+			Sertifikat Anda dapat diperiksa keasliannya oleh siapa pun, langsung ke
+			catatan permanen. Data pribadi tidak disimpan di blockchain.
+		</div>
 	</footer>
 </div>
 
 <style>
-	.cangkang { max-width: 780px; margin: 0 auto; padding: 0 20px 64px; }
-	header {
-		display: flex; align-items: center; justify-content: space-between; gap: 16px;
-		padding: 18px 0; border-bottom: 1px solid var(--garis); margin-bottom: 30px;
+	.situs { display: flex; flex-direction: column; min-height: 100vh; }
+	header { background: var(--putih); border-bottom: var(--rangka); }
+	.kepala-isi {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		padding-top: 16px;
+		padding-bottom: 16px;
 	}
-	.merek { display: flex; align-items: baseline; gap: 8px; color: var(--tx); text-decoration: none; }
-	.merek .lambang { align-self: center; }
-	.nama { font-weight: 700; font-size: 16px; letter-spacing: 0.06em; }
-	.sub-merek { font-size: 12px; color: var(--redup); }
-	.lambang { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 7px; background: var(--aksen); color: #fff; font-size: 14px; }
-	.kanan { display: flex; align-items: center; gap: 12px; }
-	.sapa { font-size: 13px; color: var(--redup); }
-	button { background: transparent; color: var(--redup); border: 1px solid var(--garis); border-radius: 8px; padding: 6px 12px; font-size: 12.5px; cursor: pointer; }
-	button:hover { color: var(--tx); }
-	footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--garis); font-size: 12.5px; color: var(--redup); }
+	.merek { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+	.lambang {
+		display: grid; place-items: center;
+		width: 34px; height: 34px;
+		background: var(--kuning); border: var(--rangka); border-radius: 9px;
+		box-shadow: 2px 2px 0 var(--hitam); font-size: 17px; font-weight: 800;
+	}
+	.nama { font-family: var(--judul); font-size: 22px; font-weight: 800; letter-spacing: 0.02em; }
+	.slogan { font-size: 12.5px; font-weight: 600; color: var(--abu); border-left: 1.5px solid var(--abu-garis); padding-left: 10px; }
+	.sapa { font-weight: 600; }
+
+	main.isi { flex: 1; padding-top: 34px; padding-bottom: 56px; }
+
+	footer { background: var(--hitam); color: #C9C9C9; margin-top: 40px; }
+	.kaki-isi { padding-top: 26px; padding-bottom: 26px; font-size: 13px; line-height: 1.6; }
+
+	@media (max-width: 520px) { .slogan, .sapa { display: none; } }
 </style>

@@ -130,12 +130,12 @@
 	<form method="POST" action="?/simpan"
 		use:enhance={() => { sedangSimpan = true; return async ({ update }) => { await update({ reset: false }); sedangSimpan = false; }; }}>
 		<input type="hidden" name="template" value={JSON.stringify({ nama, ruas, qr })} />
-		<button type="submit" disabled={sedangSimpan}>{sedangSimpan ? 'Menyimpan…' : 'Simpan desain'}</button>
+		<button class="tombol" type="submit" disabled={sedangSimpan}>{sedangSimpan ? 'Menyimpan…' : 'Simpan desain'}</button>
 	</form>
 </div>
 
 {#if form?.pesan}
-	<div class="kabar {form.berhasil ? 'ok' : 'bad'}">{form.pesan}</div>
+	<div class="kabar {form.berhasil ? 'sah' : 'bahaya'}">{form.pesan}</div>
 {/if}
 
 <p class="petunjuk">
@@ -151,7 +151,7 @@
 
 			{#each ruas as r (r.id)}
 				<button
-					class="ruas" class:aktif={r.id === terpilih}
+					class="ruas tombol" class:aktif={r.id === terpilih}
 					style="
 						left: {(r.x / L) * 100}%;
 						top: {(r.y / T) * 100}%;
@@ -168,7 +168,7 @@
 
 			{#if qr.tampil}
 				<button
-					class="qr" style="left: {(qr.x / L) * 100}%; top: {(qr.y / T) * 100}%; width: {(qr.ukuran / L) * 100}%;"
+					class="qr tombol" style="left: {(qr.x / L) * 100}%; top: {(qr.y / T) * 100}%; width: {(qr.ukuran / L) * 100}%;"
 					onpointerdown={mulaiGeserQr} onpointermove={geserQrGerak}
 					onpointerup={() => (geserQr = null)} onpointercancel={() => (geserQr = null)}
 				>QR</button>
@@ -181,7 +181,7 @@
 			<h3>Tambah tulisan</h3>
 			<div class="pilihan">
 				{#each Object.entries(RUAS_TERSEDIA) as [k, label]}
-					<button class="tambah" onclick={() => tambahRuas(k as KunciRuas)}>+ {label}</button>
+					<button class="tambah tombol putih mini" onclick={() => tambahRuas(k as KunciRuas)}>+ {label}</button>
 				{/each}
 			</div>
 		</section>
@@ -233,7 +233,7 @@
 					<input type="checkbox" bind:checked={aktif.hurufBesar} /> HURUF BESAR SEMUA
 				</label>
 
-				<button class="hapus" onclick={() => hapusRuas(aktif.id)}>Hapus tulisan ini</button>
+				<button class="hapus tombol merah mini" onclick={() => hapusRuas(aktif.id)}>Hapus tulisan ini</button>
 			</section>
 		{:else}
 			<section class="pengaturan">

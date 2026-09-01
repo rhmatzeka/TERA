@@ -1,81 +1,220 @@
 <script lang="ts">
+	import '../app.css';
 	import { page } from '$app/state';
 	let { children, data } = $props();
 
 	const diArea = $derived(
-		page.url.pathname.startsWith('/admin') || page.url.pathname.startsWith('/portal')
+		page.url.pathname.startsWith('/admin') ||
+		page.url.pathname.startsWith('/portal') ||
+		page.url.pathname.startsWith('/explorer')
 	);
 </script>
 
 {#if diArea}
 	{@render children()}
 {:else}
-	<div class="cangkang">
+	<div class="situs">
+		<!-- bilah tipis paling atas -->
+		<div class="bilah">
+			<div class="wadah bilah-isi">
+				<span>Tanda Elektronik Resmi Autentik</span>
+				<span class="bilah-kanan">
+					<a href="/onchain">Catatan Blockchain</a>
+					<a href="/explorer">Explorer</a>
+				</span>
+			</div>
+		</div>
+
 		<header>
-			<a href="/" class="merek">
-				<span class="lambang">✓</span>
-				<span class="nama">TERA</span>
-				<span class="sub-merek">Sertifikat Digital</span>
-			</a>
-			<nav>
-				<a href="/onchain" class:aktif={page.url.pathname === '/onchain'}>Catatan Blockchain</a>
-				{#if data.pengguna}
-					<a class="tombol-nav" href={data.pengguna.peran === 'peserta' ? '/portal' : '/admin'}>
-						{data.pengguna.peran === 'peserta' ? 'Portal Saya' : 'Dashboard'}
-					</a>
-				{:else}
-					<a class="tombol-nav" href="/masuk">Masuk</a>
-				{/if}
-			</nav>
+			<div class="wadah kepala-isi">
+				<a href="/" class="merek">
+					<span class="lambang">✓</span>
+					<span class="nama">TERA</span>
+					<span class="slogan">Sertifikat Digital</span>
+				</a>
+
+				<nav>
+					<a href="/onchain" class:aktif={page.url.pathname === '/onchain'}>Catatan Blockchain</a>
+					{#if data.pengguna}
+						<a class="tombol mini" href={data.pengguna.peran === 'peserta' ? '/portal' : '/admin'}>
+							{data.pengguna.peran === 'peserta' ? 'Portal Saya' : 'Dashboard'}
+						</a>
+					{:else}
+						<a class="tombol mini" href="/masuk">Masuk</a>
+					{/if}
+				</nav>
+			</div>
+			<div class="pita"><i></i><i></i><i></i><i></i><i></i></div>
 		</header>
 
 		<main>{@render children()}</main>
 
 		<footer>
-			<strong>TERA</strong> — Tanda Elektronik Resmi Autentik.
-			Keaslian sertifikat tercatat permanen; data pribadi tidak disimpan di blockchain.
+			<div class="pita"><i></i><i></i><i></i><i></i><i></i></div>
+
+			<div class="wadah kaki-atas">
+				<div class="kaki-merek">
+					<span class="lambang besar">✓</span>
+					<div>
+						<span class="nama">TERA</span>
+						<p class="mungil">Tanda Elektronik Resmi Autentik</p>
+					</div>
+				</div>
+				<p class="kaki-teks">
+					Sertifikat yang diterbitkan melalui TERA dicatat permanen di blockchain
+					sehingga keasliannya dapat diperiksa siapa pun, kapan pun, tanpa
+					bergantung pada server penyelenggara. Tidak ada data pribadi peserta
+					yang tersimpan di blockchain.
+				</p>
+			</div>
+
+			<div class="kaki-kolom-bungkus">
+				<div class="wadah kaki-kolom">
+					<div>
+						<h4>Verifikasi</h4>
+						<a href="/">Cari sertifikat</a>
+						<a href="/onchain">Catatan blockchain</a>
+						<a href="/explorer">Explorer</a>
+					</div>
+					<div>
+						<h4>Penyelenggara</h4>
+						<a href="/masuk">Masuk</a>
+						<a href="/admin/kegiatan">Kegiatan</a>
+						<a href="/admin/desain">Desain sertifikat</a>
+					</div>
+					<div>
+						<h4>Peserta</h4>
+						<a href="/masuk">Masuk portal</a>
+						<a href="/portal">Sertifikat saya</a>
+					</div>
+					<div>
+						<h4>Tentang</h4>
+						<span class="baris-kaki">Merkle Tree · Keccak-256</span>
+						<span class="baris-kaki">Blockchain Monad</span>
+						<span class="baris-kaki">Nol data pribadi on-chain</span>
+					</div>
+				</div>
+			</div>
 		</footer>
 	</div>
 {/if}
 
 <style>
-	:global(*) { box-sizing: border-box; }
-	:global(html) { color-scheme: light dark; }
-	:global(body) {
-		margin: 0;
-		font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-		background: var(--bg); color: var(--tx); line-height: 1.55;
-		-webkit-font-smoothing: antialiased;
+	.situs { display: flex; flex-direction: column; min-height: 100vh; }
+
+	/* ── bilah atas ─────────────────────────────────────────── */
+	.bilah {
+		background: var(--hitam);
+		color: var(--putih);
+		font-size: 11.5px;
+		font-weight: 600;
+		letter-spacing: 0.02em;
 	}
-	:global(:root) {
-		--bg: #f6f7f9; --kartu: #ffffff; --tx: #16181d; --redup: #676e7d;
-		--garis: #e2e5ea; --aksen: #1f6feb;
-		--ok-bg: #e8f6ec; --ok-tx: #12643a; --ok-garis: #9fd6b4;
-		--bad-bg: #fdeceb; --bad-tx: #97231c; --bad-garis: #f0b3ae;
-		--warn-bg: #fdf4e3; --warn-tx: #7a5312; --warn-garis: #e8cea0;
+	.bilah-isi {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 16px;
+		height: 32px;
 	}
-	@media (prefers-color-scheme: dark) {
-		:global(:root) {
-			--bg: #0f1115; --kartu: #171a1f; --tx: #e9ecf1; --redup: #99a1b0;
-			--garis: #282d35; --aksen: #58a6ff;
-			--ok-bg: #10251a; --ok-tx: #79d2a2; --ok-garis: #22503a;
-			--bad-bg: #2a1514; --bad-tx: #f3a49d; --bad-garis: #5b2a26;
-			--warn-bg: #2a2113; --warn-tx: #e8c37a; --warn-garis: #5a4622;
-		}
+	.bilah-kanan { display: flex; gap: 18px; }
+	.bilah a { color: var(--putih); text-decoration: none; opacity: .8; }
+	.bilah a:hover { opacity: 1; text-decoration: underline; }
+
+	/* ── kepala ─────────────────────────────────────────────── */
+	header { background: var(--putih); border-bottom: var(--rangka); }
+	.kepala-isi {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+		padding-top: 16px;
+		padding-bottom: 16px;
 	}
-	.cangkang { max-width: 960px; margin: 0 auto; padding: 0 20px 64px; }
-	header {
-		display: flex; align-items: center; justify-content: space-between; gap: 16px;
-		padding: 18px 0; border-bottom: 1px solid var(--garis); margin-bottom: 28px;
+	.merek { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+	.lambang {
+		display: grid;
+		place-items: center;
+		width: 34px;
+		height: 34px;
+		background: var(--kuning);
+		border: var(--rangka);
+		border-radius: 9px;
+		box-shadow: 2px 2px 0 var(--hitam);
+		font-size: 17px;
+		font-weight: 800;
 	}
-	.merek { display: flex; align-items: baseline; gap: 8px; color: var(--tx); text-decoration: none; }
-	.merek .lambang { align-self: center; }
-	.nama { font-weight: 700; font-size: 17px; letter-spacing: 0.06em; }
-	.sub-merek { font-size: 12.5px; color: var(--redup); font-weight: 400; }
-	.lambang { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 7px; background: var(--aksen); color: #fff; font-size: 14px; }
-	nav { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
-	nav a { font-size: 13px; color: var(--redup); text-decoration: none; padding: 6px 11px; border-radius: 8px; }
-	nav a:hover, nav a.aktif { color: var(--tx); background: color-mix(in srgb, var(--tx) 7%, transparent); }
-	.tombol-nav { background: var(--aksen) !important; color: #fff !important; font-weight: 550; }
-	footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--garis); font-size: 12.5px; color: var(--redup); }
+	.lambang.besar { width: 40px; height: 40px; font-size: 20px; }
+	.nama {
+		font-family: var(--judul);
+		font-size: 23px;
+		font-weight: 800;
+		letter-spacing: 0.02em;
+		line-height: 1;
+	}
+	.slogan {
+		font-size: 12.5px;
+		font-weight: 600;
+		color: var(--abu);
+		border-left: 1.5px solid var(--abu-garis);
+		padding-left: 10px;
+	}
+
+	nav { display: flex; align-items: center; gap: 8px; }
+	nav > a:not(.tombol) {
+		font-size: 14px;
+		font-weight: 600;
+		text-decoration: none;
+		padding: 8px 12px;
+		border-radius: 999px;
+	}
+	nav > a:not(.tombol):hover, nav > a.aktif { background: var(--abu-muda); }
+
+	main { flex: 1; }
+
+	/* ── kaki ───────────────────────────────────────────────── */
+	footer { background: var(--hitam); color: var(--putih); margin-top: 84px; }
+	.kaki-atas {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 48px;
+		padding-top: 46px;
+		padding-bottom: 40px;
+		align-items: start;
+	}
+	.kaki-merek { display: flex; align-items: center; gap: 13px; }
+	.kaki-merek .nama { display: block; }
+	.kaki-merek p { color: #A6A6A6; margin-top: 2px; }
+	.kaki-teks { font-size: 13.5px; line-height: 1.68; color: #C9C9C9; max-width: 62ch; }
+
+	.kaki-kolom-bungkus { border-top: 1.5px solid #2C2C2C; }
+	.kaki-kolom {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 32px;
+		padding-top: 34px;
+		padding-bottom: 44px;
+	}
+	.kaki-kolom h4 {
+		font-size: 13px;
+		font-weight: 800;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--kuning);
+		margin-bottom: 14px;
+	}
+	.kaki-kolom div { display: flex; flex-direction: column; gap: 9px; }
+	.kaki-kolom a { font-size: 13.5px; font-weight: 600; color: var(--putih); text-decoration: none; }
+	.kaki-kolom a:hover { color: var(--kuning); }
+	.baris-kaki { font-size: 13px; color: #A6A6A6; }
+
+	@media (max-width: 860px) {
+		.kaki-atas { grid-template-columns: 1fr; gap: 24px; }
+		.kaki-kolom { grid-template-columns: repeat(2, 1fr); gap: 26px; }
+	}
+	@media (max-width: 560px) {
+		.slogan { display: none; }
+		.bilah-isi > span:first-child { display: none; }
+		.bilah-isi { justify-content: flex-end; }
+	}
 </style>

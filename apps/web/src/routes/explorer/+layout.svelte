@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '../../app.css';
 	let { children } = $props();
 	let cari = $state('');
 
@@ -13,38 +14,74 @@
 	}
 </script>
 
-<div class="cangkang">
+<div class="situs">
 	<header>
-		<a href="/explorer" class="merek">
-			<span class="lambang">⛓</span>
-			<span>TERA Explorer</span>
-			<span class="tanda">bawaan</span>
-		</a>
-		<form onsubmit={telusuri}>
-			<input bind:value={cari} placeholder="Hash transaksi, alamat, atau nomor blok" />
-			<button type="submit">Telusuri</button>
-		</form>
+		<div class="wadah kepala-isi">
+			<a href="/explorer" class="merek">
+				<span class="lambang">⛓</span>
+				<span class="nama">TERA</span>
+				<span class="slogan">Explorer</span>
+			</a>
+			<form onsubmit={telusuri}>
+				<input bind:value={cari} placeholder="Hash transaksi, alamat, atau nomor blok" />
+				<button class="tombol" type="submit">Telusuri</button>
+			</form>
+		</div>
+		<div class="pita"><i></i><i></i><i></i><i></i><i></i></div>
 	</header>
-	<main>{@render children()}</main>
+
+	<main class="wadah isi">{@render children()}</main>
+
 	<footer>
-		Explorer bawaan aplikasi, membaca langsung dari node RPC.
-		<a href="/">← Kembali ke aplikasi</a>
+		<div class="wadah kaki-isi">
+			<span>Explorer bawaan TERA — membaca langsung dari node RPC.</span>
+			<a href="/">← Kembali ke aplikasi</a>
+		</div>
 	</footer>
 </div>
 
 <style>
-	.cangkang { max-width: 940px; margin: 0 auto; padding: 0 20px 60px; }
-	header {
-		display: flex; align-items: center; justify-content: space-between; gap: 16px;
-		padding: 16px 0; border-bottom: 1px solid var(--garis); margin-bottom: 26px; flex-wrap: wrap;
+	.situs { display: flex; flex-direction: column; min-height: 100vh; }
+	header { background: var(--hitam); }
+	.kepala-isi {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 18px;
+		padding-top: 16px;
+		padding-bottom: 16px;
+		flex-wrap: wrap;
 	}
-	.merek { display: flex; align-items: center; gap: 9px; font-weight: 650; font-size: 14.5px; color: var(--tx); text-decoration: none; }
-	.lambang { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 7px; background: #2f3a4a; color: #fff; font-size: 12px; }
-	.tanda { font-size: 10.5px; color: var(--redup); border: 1px solid var(--garis); border-radius: 999px; padding: 1px 8px; font-weight: 400; }
-	form { display: flex; gap: 6px; flex: 1; max-width: 420px; }
-	input { flex: 1; padding: 7px 11px; border: 1px solid var(--garis); border-radius: 8px; background: var(--kartu); color: var(--tx); font-size: 12.5px; }
-	button { background: var(--aksen); color: #fff; border: 0; border-radius: 8px; padding: 7px 14px; font-size: 12.5px; font-weight: 550; cursor: pointer; }
-	footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--garis); font-size: 12px; color: var(--redup); display: flex; justify-content: space-between; gap: 12px; }
-	footer a { color: var(--aksen); text-decoration: none; }
-	@media (max-width: 620px) { form { max-width: none; flex: 1 1 100%; } }
+	.merek { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--putih); }
+	.lambang {
+		display: grid; place-items: center;
+		width: 32px; height: 32px;
+		background: var(--kuning); color: var(--hitam);
+		border: 2px solid var(--putih); border-radius: 9px;
+		font-size: 15px; font-weight: 800;
+	}
+	.nama { font-family: var(--judul); font-size: 21px; font-weight: 800; letter-spacing: 0.02em; }
+	.slogan { font-size: 12.5px; font-weight: 600; color: #A6A6A6; border-left: 1.5px solid #3A3A3A; padding-left: 10px; }
+
+	form { display: flex; gap: 8px; flex: 1; max-width: 460px; }
+	form input { font-size: 13.5px; padding: 9px 13px; }
+
+	main.isi { flex: 1; padding-top: 30px; padding-bottom: 60px; }
+
+	footer { background: var(--hitam); color: #A6A6A6; }
+	.kaki-isi {
+		display: flex;
+		justify-content: space-between;
+		gap: 14px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		font-size: 12.5px;
+		flex-wrap: wrap;
+	}
+	.kaki-isi a { color: var(--kuning); text-decoration: none; font-weight: 600; }
+
+	@media (max-width: 620px) {
+		form { max-width: none; flex: 1 1 100%; }
+		.slogan { display: none; }
+	}
 </style>

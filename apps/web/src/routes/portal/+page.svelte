@@ -30,9 +30,9 @@
 				<p class="ket">{data.batch.penyelenggara} · {data.batch.tanggalKegiatan}</p>
 
 				{#if s.dicabut}
-					<p class="lencana bad">Sertifikat ini telah dicabut oleh penerbit</p>
+					<p class="pil bahaya">Sertifikat ini telah dicabut oleh penerbit</p>
 				{:else}
-					<p class="lencana ok">Aktif dan tercatat permanen</p>
+					<p class="pil sah">Aktif dan tercatat permanen</p>
 				{/if}
 
 				<dl>
@@ -46,7 +46,7 @@
 
 				<div class="aksi">
 					<a class="tombol" href="/verify/{s.id}">Buka halaman verifikasi</a>
-					<a class="tombol sekunder" href="/portal/{s.id}/bukti" download="bukti-{s.id}.json">
+					<a class="tombol putih" href="/portal/{s.id}/bukti" download="bukti-{s.id}.json">
 						Unduh berkas bukti
 					</a>
 				</div>
@@ -61,26 +61,31 @@
 {/if}
 
 <style>
-	h1 { font-size: 23px; margin: 0 0 6px; }
-	.sub { color: var(--redup); font-size: 13.5px; margin: 0 0 24px; max-width: 62ch; }
-	.kartu { background: var(--kartu); border: 1px solid var(--garis); border-radius: 12px; overflow: hidden; margin-bottom: 18px; }
-	.pita { height: 4px; background: var(--aksen); }
-	.pita.dicabut { background: #c0392b; }
-	.isi { padding: 24px; }
-	.jenis { font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--redup); }
-	h2 { font-size: 24px; margin: 8px 0 4px; letter-spacing: -0.02em; }
-	.ket { color: var(--redup); font-size: 13px; margin: 2px 0; }
-	.kegiatan { font-size: 16px; font-weight: 600; margin: 8px 0 4px; }
-	.lencana { display: inline-block; font-size: 12.5px; padding: 6px 12px; border-radius: 8px; margin: 16px 0 4px; }
-	.lencana.ok { background: var(--ok-bg); color: var(--ok-tx); border: 1px solid var(--ok-garis); }
-	.lencana.bad { background: var(--bad-bg); color: var(--bad-tx); border: 1px solid var(--bad-garis); }
-	dl { display: grid; grid-template-columns: minmax(120px, 160px) 1fr; gap: 6px 18px; margin: 18px 0 0; font-size: 13px; border-top: 1px solid var(--garis); padding-top: 16px; }
-	dt { color: var(--redup); }
-	dd { margin: 0; min-width: 0; }
-	.aksi { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
-	.tombol { background: var(--aksen); color: #fff; border-radius: 8px; padding: 9px 16px; font-size: 13px; font-weight: 550; text-decoration: none; }
-	.sekunder { background: transparent; color: var(--tx); border: 1px solid var(--garis); }
-	.catatan { font-size: 12px; color: var(--redup); margin: 14px 0 0; line-height: 1.55; max-width: 62ch; }
-	.kabar { background: var(--kartu); border: 1px solid var(--garis); border-radius: 10px; padding: 16px; font-size: 13.5px; color: var(--redup); }
-	@media (max-width: 620px) { dl { grid-template-columns: 1fr; gap: 2px 0; } dt { margin-top: 8px; } }
+	h1 { font-size: 23px; margin: 0 0 6px;
+	}
+	.sub { color: var(--redup); font-size: 13.5px; margin: 0 0 24px; max-width: 62ch;
+	}
+	.pita { height: 4px; background: var(--aksen);
+	}
+	.isi { padding: 24px;
+	}
+	.jenis { font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase; color: var(--redup);
+	}
+	h2 { font-size: 24px; margin: 8px 0 4px; letter-spacing: -0.02em;
+	}
+	.ket { color: var(--redup); font-size: 13px; margin: 2px 0;
+	}
+	.kegiatan { font-size: 16px; font-weight: 600; margin: 8px 0 4px;
+	}
+	.lencana { display: inline-block; font-size: 12.5px; padding: 6px 12px; border-radius: 8px; margin: 16px 0 4px;
+	}
+	.lencana.ok { background: var(--ok-bg); color: var(--ok-tx); border: 1px solid var(--ok-garis);
+	}
+	.lencana.bad { background: var(--bad-bg); color: var(--bad-tx); border: 1px solid var(--bad-garis);
+	}
+	.aksi { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap;
+	}
+	.catatan { font-size: 12px; color: var(--redup); margin: 14px 0 0; line-height: 1.55; max-width: 62ch;
+	}
 </style>
+

@@ -10,6 +10,10 @@ export async function load({ params }) {
 
 	return {
 		batch: isi.batch,
+		kurs: {
+			simbol: env.SIMBOL_TOKEN ?? 'ETH',
+			hargaIdr: env.HARGA_TOKEN_IDR ? Number(env.HARGA_TOKEN_IDR) : null
+		},
 		jaringan: isi.jaringan,
 		basisExplorer: env.EXPLORER_URL ?? null,
 		contoh: isi.sertifikat.slice(0, 10).map((s) => ({ id: s.id, nama: s.nama, indeks: s.indeks }))

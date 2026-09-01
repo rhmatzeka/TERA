@@ -43,19 +43,21 @@
 {/if}
 
 <style>
-	.balik { font-size: 12.5px; color: var(--redup); text-decoration: none; }
-	h1 { font-size: 21px; margin: 10px 0 4px; }
-	h2 { font-size: 14px; margin: 0 0 8px; }
-	.hash-besar { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--redup); margin: 0 0 14px; overflow-wrap: anywhere; }
-	.tanda { display: inline-block; background: var(--ok-bg); color: var(--ok-tx); border: 1px solid var(--ok-garis); border-radius: 8px; padding: 6px 12px; font-size: 12.5px; margin-bottom: 14px; }
-	.kartu { background: var(--kartu); border: 1px solid var(--garis); border-radius: 10px; padding: 17px; margin-bottom: 14px; }
-	.sorot { border-color: var(--aksen); }
-	.kecil { font-size: 12px; color: var(--redup); margin: 0 0 12px; }
-	.catatan { margin: 12px 0 0; }
-	dl { display: grid; grid-template-columns: minmax(120px, 160px) 1fr; gap: 6px 18px; margin: 0; font-size: 12.5px; }
-	dt { color: var(--redup); }
-	dd { margin: 0; overflow-wrap: anywhere; }
-	.mono { font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; }
-	dd a { color: var(--aksen); text-decoration: none; }
-	@media (max-width: 620px) { dl { grid-template-columns: 1fr; gap: 2px 0; } dt { margin-top: 8px; } }
+	.balik { font-size: 12.5px; color: var(--redup); text-decoration: none;
+	}
+	h1 { font-size: 21px; margin: 10px 0 4px;
+	}
+	h2 { font-size: 14px; margin: 0 0 8px;
+	}
+	.hash-besar { font-family: ui-monospace, Menlo, monospace; font-size: 12px; color: var(--redup); margin: 0 0 14px; overflow-wrap: anywhere;
+	}
+	.tanda { display: inline-block; background: var(--ok-bg); color: var(--ok-tx); border: 1px solid var(--ok-garis); border-radius: 8px; padding: 6px 12px; font-size: 12.5px; margin-bottom: 14px;
+	}
+	.kecil { font-size: 12px; color: var(--redup); margin: 0 0 12px;
+	}
+	.catatan { margin: 12px 0 0;
+	}
+	dd a { color: var(--aksen); text-decoration: none;
+	}
 </style>
+

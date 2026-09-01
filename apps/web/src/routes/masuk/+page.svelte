@@ -3,87 +3,115 @@
 	let email = $state(form?.email ?? '');
 	let sandi = $state('');
 
-	function isi(e: string, s: string) {
-		email = e;
-		sandi = s;
-	}
+	function isi(e: string, s: string) { email = e; sandi = s; }
 </script>
 
-<div class="bungkus">
-	<div class="kotak">
-		<h1>Masuk</h1>
-		<p class="sub">Staf penyelenggara dan peserta menggunakan formulir yang sama.</p>
+<div class="wadah halaman">
+	<div class="kisi">
+		<!-- formulir -->
+		<div class="kartu kotak-masuk">
+			<span class="label-atas">Penyelenggara &amp; peserta</span>
+			<h1 class="judul">Masuk</h1>
+			<p class="kecil redup">Staf penyelenggara dan peserta memakai formulir yang sama.</p>
 
-		{#if form?.pesan}<div class="galat">{form.pesan}</div>{/if}
+			{#if form?.pesan}
+				<div class="kabar bahaya galat">{form.pesan}</div>
+			{/if}
 
-		<form method="POST">
-			<input type="hidden" name="tujuan" value={data.tujuan} />
-			<label for="email">Alamat surel</label>
-			<input id="email" name="email" type="email" bind:value={email} required autocomplete="username" />
+			<form method="POST">
+				<input type="hidden" name="tujuan" value={data.tujuan} />
 
-			<label for="sandi">Kata sandi</label>
-			<input id="sandi" name="sandi" type="password" bind:value={sandi} required autocomplete="current-password" />
+				<div class="ruas">
+					<label for="email">Alamat surel</label>
+					<input id="email" name="email" type="email" bind:value={email} required autocomplete="username" />
+				</div>
 
-			<button type="submit">Masuk</button>
-		</form>
-	</div>
+				<div class="ruas">
+					<label for="sandi">Kata sandi</label>
+					<input id="sandi" name="sandi" type="password" bind:value={sandi} required autocomplete="current-password" />
+				</div>
 
-	<div class="kotak akun">
-		<h2>Akun untuk mencoba</h2>
-		<p class="kecil">Klik salah satu untuk mengisi formulir.</p>
+				<button class="tombol lebar" type="submit">Masuk</button>
+			</form>
+		</div>
 
-		<span class="golongan">Staf penyelenggara → Dashboard Admin</span>
-		{#each data.demo as a}
-			<button class="baris" onclick={() => isi(a.email, a.sandi)}>
-				<span class="peran">{a.peran}</span>
-				<span class="mono">{a.email}</span>
-				<span class="sandi">{a.sandi}</span>
-			</button>
-		{/each}
+		<!-- akun demo -->
+		<div class="kartu kotak-akun">
+			<h2 class="judul-akun">Akun untuk mencoba</h2>
+			<p class="mungil redup">Klik salah satu untuk mengisi formulir.</p>
 
-		{#if data.peserta}
-			<span class="golongan">Peserta → Portal Peserta</span>
-			<button class="baris" onclick={() => isi(data.peserta.email, data.peserta.sandi)}>
-				<span class="peran">peserta</span>
-				<span class="mono">{data.peserta.email}</span>
-				<span class="sandi">{data.peserta.sandi}</span>
-			</button>
-			<p class="kecil catatan">
-				Semua peserta pada batch ini dapat masuk memakai surel masing-masing
-				(<code>peserta1</code>…<code>peserta500@kampus.ac.id</code>) dengan kata sandi yang sama.
-			</p>
-		{/if}
+			<span class="golongan">Staf penyelenggara</span>
+			{#each data.demo as a}
+				<button class="baris-akun" onclick={() => isi(a.email, a.sandi)}>
+					<span class="pil kuning">{a.peran}</span>
+					<span class="surel mono">{a.email}</span>
+					<span class="sandi mono">{a.sandi}</span>
+				</button>
+			{/each}
+
+			{#if data.peserta}
+				<span class="golongan">Peserta</span>
+				<button class="baris-akun" onclick={() => isi(data.peserta.email, data.peserta.sandi)}>
+					<span class="pil netral">peserta</span>
+					<span class="surel mono">{data.peserta.email}</span>
+					<span class="sandi mono">{data.peserta.sandi}</span>
+				</button>
+				<p class="mungil redup catatan">
+					Seluruh peserta pada kegiatan yang sudah terbit dapat masuk memakai
+					surel masing-masing dengan kata sandi yang sama.
+				</p>
+			{/if}
+		</div>
 	</div>
 </div>
 
 <style>
-	.bungkus { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; max-width: 780px; margin: 20px auto 0; }
-	.kotak { background: var(--kartu); border: 1px solid var(--garis); border-radius: 12px; padding: 24px; }
-	h1 { font-size: 21px; margin: 0 0 4px; }
-	h2 { font-size: 14px; margin: 0 0 4px; }
-	.sub { color: var(--redup); font-size: 13px; margin: 0 0 18px; }
-	.kecil { font-size: 12px; color: var(--redup); margin: 0 0 14px; line-height: 1.5; }
-	label { display: block; font-size: 12.5px; color: var(--redup); margin: 12px 0 5px; }
-	input {
-		width: 100%; padding: 10px 12px; border: 1px solid var(--garis); border-radius: 8px;
-		background: var(--bg); color: var(--tx); font-size: 14px;
+	.halaman { padding-top: 56px; padding-bottom: 40px; }
+	.kisi { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; max-width: 880px; margin: 0 auto; }
+
+	.judul { font-size: 34px; margin: 8px 0 6px; }
+	.kotak-masuk form { margin-top: 20px; }
+	.ruas { margin-bottom: 16px; }
+	.tombol.lebar { width: 100%; margin-top: 8px; }
+	.galat { margin-top: 18px; }
+
+	.kotak-akun { background: var(--abu-muda); }
+	.judul-akun { font-size: 17px; margin-bottom: 4px; }
+	.golongan {
+		display: block;
+		font-size: 10.5px;
+		font-weight: 700;
+		letter-spacing: 0.13em;
+		text-transform: uppercase;
+		color: var(--abu);
+		margin: 20px 0 9px;
 	}
-	form button {
-		width: 100%; margin-top: 18px; background: var(--aksen); color: #fff; border: 0;
-		border-radius: 8px; padding: 11px; font-size: 14px; font-weight: 550; cursor: pointer;
+	.baris-akun {
+		display: grid;
+		grid-template-columns: 92px 1fr auto;
+		gap: 10px;
+		align-items: center;
+		width: 100%;
+		text-align: left;
+		background: var(--putih);
+		border: var(--rangka-tipis);
+		border-radius: var(--lengkung-kecil);
+		padding: 9px 12px;
+		margin-bottom: 8px;
+		cursor: pointer;
+		font-family: var(--teks);
+		transition: transform .12s ease, box-shadow .12s ease;
 	}
-	.galat { background: var(--bad-bg); color: var(--bad-tx); border: 1px solid var(--bad-garis); border-radius: 8px; padding: 10px 13px; font-size: 13px; margin-bottom: 14px; }
-	.golongan { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--redup); margin: 16px 0 8px; }
-	.baris {
-		display: grid; grid-template-columns: 92px 1fr auto; gap: 10px; align-items: center;
-		width: 100%; text-align: left; background: var(--bg); border: 1px solid var(--garis);
-		border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; cursor: pointer; color: var(--tx);
-	}
-	.baris:hover { border-color: var(--aksen); }
-	.peran { font-size: 11px; color: var(--redup); }
-	.mono { font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; overflow-wrap: anywhere; }
-	.sandi { font-family: ui-monospace, Menlo, monospace; font-size: 11px; color: var(--redup); }
+	.baris-akun:hover { transform: translate(-2px, -2px); box-shadow: var(--bayang-kecil); }
+	.baris-akun:focus-visible { outline: 3px solid var(--biru); outline-offset: 2px; }
+	.surel { font-size: 11.5px; overflow-wrap: anywhere; }
+	.sandi { font-size: 11px; color: var(--abu); }
 	.catatan { margin-top: 12px; }
-	code { font-family: ui-monospace, Menlo, monospace; font-size: 11px; }
-	@media (max-width: 700px) { .bungkus { grid-template-columns: 1fr; } }
+
+	@media (max-width: 760px) {
+		.kisi { grid-template-columns: 1fr; }
+	}
+	@media (max-width: 420px) {
+		.baris-akun { grid-template-columns: 1fr; gap: 5px; }
+	}
 </style>

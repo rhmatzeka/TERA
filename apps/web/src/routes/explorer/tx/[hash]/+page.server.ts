@@ -1,3 +1,4 @@
+import { env } from '$env/dynamic/private';
 import { error } from '@sveltejs/kit';
 import { decodeEventLog, decodeFunctionData, type Hex } from 'viem';
 import { klienRantai, amankan } from '$lib/server/rantai';
@@ -77,6 +78,10 @@ export async function load({ params }) {
 
 		return amankan({
 			hash,
+		kurs: {
+			simbol: env.SIMBOL_TOKEN ?? 'ETH',
+			hargaIdr: env.HARGA_TOKEN_IDR ? Number(env.HARGA_TOKEN_IDR) : null
+		},
 			chainId: r.chainId,
 			jaringan: data.jaringan.nama,
 			status: struk.status,

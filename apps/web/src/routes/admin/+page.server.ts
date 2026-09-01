@@ -27,6 +27,10 @@ export async function load() {
 
 	return {
 		ada: true as const,
+		kurs: {
+			simbol: env.SIMBOL_TOKEN ?? 'ETH',
+			hargaIdr: env.HARGA_TOKEN_IDR ? Number(env.HARGA_TOKEN_IDR) : null
+		},
 		batch: data.batch,
 		jaringan: data.jaringan,
 		basisExplorer: env.EXPLORER_URL ?? null,

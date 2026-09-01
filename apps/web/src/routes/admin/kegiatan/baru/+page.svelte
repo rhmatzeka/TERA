@@ -35,7 +35,7 @@
 	<li>3. Persetujuan &amp; terbitkan</li>
 </ol>
 
-{#if form?.pesan}<div class="kabar bad">{form.pesan}</div>{/if}
+{#if form?.pesan}<div class="kabar bahaya">{form.pesan}</div>{/if}
 
 <form
 	method="POST"
@@ -81,7 +81,7 @@
 	<section class="kartu">
 		<div class="kepala-kartu">
 			<h2>Daftar peserta (CSV)</h2>
-			<button type="button" class="tautan-btn" onclick={unduhContoh}>Unduh contoh CSV</button>
+			<button type="button" class="tautan-btn tombol putih mini" onclick={unduhContoh}>Unduh contoh CSV</button>
 		</div>
 		<p class="kecil">
 			Kolom wajib: <code>nama</code>, <code>email</code>.
@@ -98,7 +98,7 @@
 			<span class="mini">maksimal 20 MB</span>
 		</label>
 
-		<button type="submit" class="utama" disabled={sedangProses}>
+		<button type="submit" class="utama tombol" disabled={sedangProses}>
 			{sedangProses ? 'Memeriksa…' : 'Periksa berkas'}
 		</button>
 	</section>
@@ -129,7 +129,7 @@
 
 		{#if form!.jumlahGalat > 0}
 			<h3>Baris yang perlu diperbaiki</h3>
-			<div class="bungkus">
+			<div class="gulir">
 				<table>
 					<thead><tr><th>Baris</th><th>Masalah</th><th>Isi</th></tr></thead>
 					<tbody>
@@ -150,7 +150,7 @@
 
 		{#if form!.jumlahSah > 0}
 			<h3>Pratinjau peserta</h3>
-			<div class="bungkus">
+			<div class="gulir">
 				<table>
 					<thead><tr><th>Baris</th><th>Nama</th><th>Email</th><th>Identitas</th><th>Peran</th></tr></thead>
 					<tbody>
@@ -187,7 +187,7 @@
 						masih menunggu persetujuan Penandatangan.
 					</p>
 				</div>
-				<button type="submit" class="utama" disabled={sedangProses}>
+				<button type="submit" class="utama tombol" disabled={sedangProses}>
 					{sedangProses ? 'Menyiapkan…' : 'Siapkan sertifikat →'}
 				</button>
 			</div>
@@ -196,31 +196,36 @@
 {/if}
 
 <style>
-	.balik { font-size: 12.5px; color: var(--redup); text-decoration: none; }
-	h1 { font-size: 23px; margin: 10px 0 4px; }
-	h2 { font-size: 15px; margin: 0 0 10px; }
-	h3 { font-size: 13px; margin: 20px 0 8px; }
-	.sub { color: var(--redup); font-size: 13.5px; margin: 0 0 20px; max-width: 60ch; }
-	.kecil { font-size: 12px; color: var(--redup); margin: 0 0 12px; line-height: 1.55; }
-	.redup { color: var(--redup); }
-	.mono { font-family: ui-monospace, Menlo, monospace; font-size: 11px; }
-
-	.langkah { list-style: none; display: flex; gap: 8px; padding: 0; margin: 0 0 18px; flex-wrap: wrap; }
-	.langkah li { font-size: 12px; color: var(--redup); border: 1px solid var(--garis); border-radius: 999px; padding: 5px 13px; }
-	.langkah li.aktif { border-color: var(--aksen); color: var(--aksen); font-weight: 550; }
-	.langkah li.selesai { background: var(--ok-bg); color: var(--ok-tx); border-color: var(--ok-garis); }
-
-	.kartu { background: var(--kartu); border: 1px solid var(--garis); border-radius: 10px; padding: 18px; margin-bottom: 14px; }
-	.kepala-kartu { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
-	.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-	.ruas.lebar { grid-column: 1 / -1; }
-	label { display: block; font-size: 12.5px; color: var(--redup); margin-bottom: 5px; }
-	select {
-		width: 100%; padding: 9px 11px; border: 1px solid var(--garis); border-radius: 8px;
-		background: var(--bg); color: var(--tx); font-size: 13.5px;
+	.balik { font-size: 12.5px; color: var(--redup); text-decoration: none;
 	}
-	.bantuan { font-size: 11.5px; color: var(--redup); margin: 6px 0 0; }
-	.bantuan a { color: var(--aksen); text-decoration: none; }
+	h1 { font-size: 23px; margin: 10px 0 4px;
+	}
+	h2 { font-size: 15px; margin: 0 0 10px;
+	}
+	h3 { font-size: 13px; margin: 20px 0 8px;
+	}
+	.sub { color: var(--redup); font-size: 13.5px; margin: 0 0 20px; max-width: 60ch;
+	}
+	.kecil { font-size: 12px; color: var(--redup); margin: 0 0 12px; line-height: 1.55;
+	}
+	.langkah { list-style: none; display: flex; gap: 8px; padding: 0; margin: 0 0 18px; flex-wrap: wrap;
+	}
+	.langkah li { font-size: 12px; color: var(--redup); border: 1px solid var(--garis); border-radius: 999px; padding: 5px 13px;
+	}
+	.langkah li.aktif { border-color: var(--aksen); color: var(--aksen); font-weight: 550;
+	}
+	.langkah li.selesai { background: var(--ok-bg); color: var(--ok-tx); border-color: var(--ok-garis);
+	}
+	.kepala-kartu { display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+	}
+	.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+	}
+	.ruas.lebar { grid-column: 1 / -1;
+	}
+	.bantuan { font-size: 11.5px; color: var(--redup); margin: 6px 0 0;
+	}
+	.bantuan a { color: var(--aksen); text-decoration: none;
+	}
 	input[type='text'], input[type='date'], input:not([type]) {
 		width: 100%; padding: 9px 11px; border: 1px solid var(--garis); border-radius: 8px;
 		background: var(--bg); color: var(--tx); font-size: 13.5px;
@@ -230,35 +235,43 @@
 		border: 1.5px dashed var(--garis); border-radius: 10px; padding: 24px;
 		cursor: pointer; margin: 4px 0 14px; text-align: center;
 	}
-	.jatuhkan:hover { border-color: var(--aksen); }
-	.jatuhkan input { display: none; }
-	.jatuhkan .ikon { font-size: 20px; color: var(--redup); }
-	.jatuhkan .teks { font-size: 13.5px; font-weight: 520; }
-	.jatuhkan .mini { font-size: 11.5px; color: var(--redup); }
-
-	button.utama { background: var(--aksen); color: #fff; border: 0; border-radius: 8px; padding: 10px 18px; font-size: 13.5px; font-weight: 550; cursor: pointer; }
-	button.utama:disabled { opacity: 0.55; cursor: default; }
-	.tautan-btn { background: none; border: 0; color: var(--aksen); font-size: 12.5px; cursor: pointer; padding: 0; }
-
-	.ikhtisar { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-bottom: 12px; }
-	.kotak { background: var(--bg); border: 1px solid var(--garis); border-radius: 9px; padding: 12px 14px; }
-	.kotak.ok { background: var(--ok-bg); border-color: var(--ok-garis); }
-	.kotak.bad { background: var(--bad-bg); border-color: var(--bad-garis); }
-	.angka { display: block; font-size: 19px; font-weight: 640; }
-	.kotak .label { display: block; font-size: 11.5px; margin: 0; color: inherit; opacity: 0.75; }
-
-	.bungkus { border: 1px solid var(--garis); border-radius: 9px; overflow-x: auto; }
-	table { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 460px; }
-	th { text-align: left; font-size: 11px; color: var(--redup); font-weight: 550; padding: 8px 11px; border-bottom: 1px solid var(--garis); }
-	td { padding: 7px 11px; border-bottom: 1px solid var(--garis); }
-	tbody tr:last-child td { border-bottom: 0; }
-	.masalah { color: var(--bad-tx); }
-	.peringatan { background: var(--warn-bg); color: var(--warn-tx); border: 1px solid var(--warn-garis); border-radius: 8px; padding: 9px 12px; margin-top: 12px; }
-
-	.aksi { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; }
-	.aksi .kecil { margin: 4px 0 0; max-width: 54ch; }
-	.kabar { border-radius: 10px; padding: 12px 15px; font-size: 13px; margin-bottom: 14px; border: 1px solid var(--garis); }
-	.kabar.bad { background: var(--bad-bg); color: var(--bad-tx); border-color: var(--bad-garis); }
-	code { font-family: ui-monospace, Menlo, monospace; font-size: 11.5px; }
-	@media (max-width: 620px) { .grid { grid-template-columns: 1fr; } }
+	.jatuhkan input { display: none;
+	}
+	.jatuhkan .ikon { font-size: 20px; color: var(--redup);
+	}
+	.jatuhkan .teks { font-size: 13.5px; font-weight: 520;
+	}
+	.jatuhkan .mini { font-size: 11.5px; color: var(--redup);
+	}
+	button.utama { background: var(--aksen); color: #fff; border: 0; border-radius: 8px; padding: 10px 18px; font-size: 13.5px; font-weight: 550; cursor: pointer;
+	}
+	button.utama:disabled { opacity: 0.55; cursor: default;
+	}
+	.tautan-btn { background: none; border: 0; color: var(--aksen); font-size: 12.5px; cursor: pointer; padding: 0;
+	}
+	.ikhtisar { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-bottom: 12px;
+	}
+	.kotak { background: var(--bg); border: 1px solid var(--garis); border-radius: 9px; padding: 12px 14px;
+	}
+	.kotak.ok { background: var(--ok-bg); border-color: var(--ok-garis);
+	}
+	.kotak.bad { background: var(--bad-bg); border-color: var(--bad-garis);
+	}
+	.angka { display: block; font-size: 19px; font-weight: 640;
+	}
+	.kotak .label { display: block; font-size: 11.5px; margin: 0; color: inherit; opacity: 0.75;
+	}
+	tbody tr:last-child td { border-bottom: 0;
+	}
+	.peringatan { background: var(--warn-bg); color: var(--warn-tx); border: 1px solid var(--warn-garis); border-radius: 8px; padding: 9px 12px; margin-top: 12px;
+	}
+	.aksi { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap;
+	}
+	.aksi .kecil { margin: 4px 0 0; max-width: 54ch;
+	}
+	code { font-family: ui-monospace, Menlo, monospace; font-size: 11.5px;
+	}
+	.grid { grid-template-columns: 1fr;
+	}
 </style>
+
