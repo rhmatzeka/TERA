@@ -5,7 +5,7 @@
 
 <div class="situs">
 	<header>
-		<div class="wadah sempit kepala-isi">
+		<div class="wadah kepala-isi">
 			<a href="/portal" class="merek">
 				<span class="lambang">✓</span>
 				<span class="nama">TERA</span>
@@ -21,11 +21,11 @@
 		<div class="pita"><i></i><i></i><i></i><i></i><i></i></div>
 	</header>
 
-	<main class="wadah sempit isi">{@render children()}</main>
+	<main class="wadah isi">{@render children()}</main>
 
 	<footer>
 		<div class="pita"><i></i><i></i><i></i><i></i><i></i></div>
-		<div class="wadah sempit kaki-isi">
+		<div class="wadah kaki-isi">
 			Sertifikat Anda dapat diperiksa keasliannya oleh siapa pun, langsung ke
 			catatan permanen. Data pribadi tidak disimpan di blockchain.
 		</div>

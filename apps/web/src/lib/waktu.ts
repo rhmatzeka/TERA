@@ -55,3 +55,15 @@ export function tampakWaktu(kunci: string, nilai: unknown): boolean {
 		/^\d{9,11}$/.test(nilai)
 	);
 }
+
+/**
+ * "20 Oktober 2026" — untuk tanggal tanpa jam, seperti tanggal kegiatan
+ * yang tersimpan dalam bentuk YYYY-MM-DD.
+ */
+export function formatTanggal(nilai: string): string {
+	const cocok = /^(\d{4})-(\d{2})-(\d{2})$/.exec(nilai.trim());
+	if (!cocok) return nilai;
+	const d = new Date(Number(cocok[1]), Number(cocok[2]) - 1, Number(cocok[3]));
+	if (Number.isNaN(d.getTime())) return nilai;
+	return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+}
