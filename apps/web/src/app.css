@@ -53,6 +53,15 @@
 	--judul: 'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 	--teks:  'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 	--mono:  'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+	/* ── alias lama ─────────────────────────────────────────────────
+	   Sejumlah halaman dalam masih memakai nama token dari sistem desain
+	   sebelumnya. Tanpa alias ini nilainya tidak terdefinisi, dan warnanya
+	   diam-diam jatuh ke bawaan peramban — tautan jadi tidak terlihat
+	   sebagai tautan. Alias dipertahankan sampai semua halaman diperbarui. */
+	--aksen: var(--biru-tua);
+	--redup: var(--abu);
+	--garis: var(--abu-garis);
 }
 
 *,

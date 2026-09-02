@@ -61,8 +61,8 @@
 		border-radius: 5px; cursor: pointer; color: inherit;
 		overflow-wrap: anywhere; max-width: 100%;
 	}
-	.hash:hover { background: color-mix(in srgb, var(--aksen) 12%, transparent); }
-	.tautan { color: var(--aksen); text-decoration: none; }
+	.hash:hover { background: color-mix(in srgb, var(--biru) 16%, transparent); }
+	.tautan { color: var(--biru-tua); text-decoration: none; }
 	.ikon { font-size: 10px; opacity: 0.65; flex: 0 0 auto; }
 	.salin:hover .ikon { opacity: 1; }
 </style>

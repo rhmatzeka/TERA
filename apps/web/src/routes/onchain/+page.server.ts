@@ -31,10 +31,16 @@ export async function load() {
 	const data = await muatBatch();
 	if (!data) return { ada: false as const };
 
+	const simbol = env.SIMBOL_TOKEN ?? 'ETH';
+	const kurs = {
+		simbol,
+		hargaIdr: env.HARGA_TOKEN_IDR ? Number(env.HARGA_TOKEN_IDR) : null
+	};
+
 	const chain = defineChain({
 		id: data.jaringan.chainId,
 		name: data.jaringan.nama,
-		nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+		nativeCurrency: { name: simbol, symbol: simbol, decimals: 18 },
 		rpcUrls: { default: { http: [data.jaringan.rpcUrl] } }
 	});
 	const client = createPublicClient({ chain, transport: http(data.jaringan.rpcUrl) });
@@ -77,6 +83,7 @@ export async function load() {
 			jaringan: data.jaringan,
 			explorer: infoExplorer(data.jaringan.chainId, env.EXPLORER_URL),
 			basisExplorer: env.EXPLORER_URL ?? null,
+			kurs,
 			rantai: {
 				dari: tx.from,
 				ke: tx.to,
@@ -88,6 +95,7 @@ export async function load() {
 				status: struk.status,
 				nomorBlok: struk.blockNumber.toString(),
 				waktuBlok: new Date(Number(blok.timestamp) * 1000).toISOString(),
+				biayaWei: (struk.gasUsed * (struk.effectiveGasPrice ?? 0n)).toString(),
 				ukuranKode: kodeKontrak ? (kodeKontrak.length - 2) / 2 : 0,
 				rootTersimpan: rootOnchain,
 				cocokDenganLokal: rootOnchain.toLowerCase() === data.batch.root.toLowerCase()
@@ -102,6 +110,7 @@ export async function load() {
 			jaringan: data.jaringan,
 			explorer: infoExplorer(data.jaringan.chainId, env.EXPLORER_URL),
 			basisExplorer: env.EXPLORER_URL ?? null,
+			kurs,
 			rantai: null,
 			peristiwa: [],
 			galat: e instanceof Error ? e.message : String(e)
